@@ -27,6 +27,7 @@ public class MediaPalace {
 		Icon icon = new ImageIcon(url);
 		return new JLabel(icon);
 	}
+MediaPalace mp = new MediaPalace();
 
 	/*
 	 * To use this method, the image must be placed in your Eclipse project in the same package as this class.
