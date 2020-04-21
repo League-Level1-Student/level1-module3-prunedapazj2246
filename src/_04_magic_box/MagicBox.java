@@ -12,14 +12,18 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class MagicBox extends JPanel implements Runnable, MouseListener {
-
+	JFrame frame = new JFrame("The Magic Box contains many secrets...");
+	JLabel l = new JLabel();
+	JPanel p = new JPanel();
 	/*
 	 * We are going to hide secrets within the magic box. 
 	 * When the user clicks on a secret place, stuff will happen.
@@ -49,8 +53,9 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	}
 
 	private void createUI() {
-		JFrame frame = new JFrame("The Magic Box contains many secrets...");
-		frame.add(this);
+		//frame.add(this);
+		p.add(this);
+		frame.add(p);
 		frame.addMouseListener(this);
 		setPreferredSize(new Dimension(backgroundImage.getWidth(), backgroundImage.getHeight()));
 		frame.pack();
@@ -81,7 +86,19 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
+		MediaPalace mp1 = new MediaPalace();
 		
+		//l=mp1.loadImageFromWithinProject("messi.jpg");
+		try {
+			l=mp1.loadImageFromTheInternet("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnX2AbJqXiEr7XLQFZpE6bpUEkyO4MFfq5iNKi5WWB6xlu84Hg&usqp=CAU");
+		} catch (MalformedURLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		p.add(l);
+		frame.add(p);
+		frame.pack();
+		System.out.println("ABCD");
 	}
 
 	@Override
