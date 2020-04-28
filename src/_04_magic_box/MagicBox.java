@@ -22,7 +22,8 @@ import javax.swing.SwingUtilities;
 
 public class MagicBox extends JPanel implements Runnable, MouseListener {
 	JFrame frame = new JFrame("The Magic Box contains many secrets...");
-	JLabel l = new JLabel();
+	JLabel l1 = new JLabel();
+	JLabel l2 = new JLabel();
 	JPanel p = new JPanel();
 	/*
 	 * We are going to hide secrets within the magic box. 
@@ -87,18 +88,30 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		MediaPalace mp1 = new MediaPalace();
-		
+		MediaPalace mp2 = new MediaPalace();
 		//l=mp1.loadImageFromWithinProject("messi.jpg");
+		if(e.getX() >= 155 && e.getX() <=205 && e.getY() <=400 && e.getY() >=350) {
 		try {
-			l=mp1.loadImageFromTheInternet("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnX2AbJqXiEr7XLQFZpE6bpUEkyO4MFfq5iNKi5WWB6xlu84Hg&usqp=CAU");
+			l1=mp1.loadImageFromTheInternet("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnX2AbJqXiEr7XLQFZpE6bpUEkyO4MFfq5iNKi5WWB6xlu84Hg&usqp=CAU");
 		} catch (MalformedURLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		p.add(l);
+		p.add(l1);
+		}
+		if(e.getX() >= 160 && e.getX() <= 190 && e.getY() >=890 && e.getY()<=920) {
+		try {
+			l2=mp2.loadImageFromTheInternet("https://upload.wikimedia.org/wikipedia/en/thumb/0/00/The_Child_aka_Baby_Yoda_%28Star_Wars%29.jpg/220px-The_Child_aka_Baby_Yoda_%28Star_Wars%29.jpg");
+		} catch (MalformedURLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		p.add(l2);
+		}
 		frame.add(p);
 		frame.pack();
 		System.out.println("ABCD");
+		System.out.println(e.getX()+" " + e.getY());
 	}
 
 	@Override
